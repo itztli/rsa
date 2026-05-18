@@ -56,16 +56,14 @@ def eea(phi_n, d):
         #print(x2)
         if x2 == 1:
             return b1  
-    return 0
-    
-    
+    return 0   
 
 x0 = int(round(time.time() * 1000)) #int(time.time()) #time.time_ns()
 #print(x0)
 small = int(M/2)
 d = x0
 e = -1 #dummy value
-print("Computing...")
+#print("Computing...")
 while e <= 0:
     x0 = int(round(time.time() * 1000)) #int(time.time()) #time.time_ns()
     p = getBigNumber(x0, small)
@@ -115,7 +113,15 @@ while e <= 0:
     #    #print(e)
     #print("e",e)
 
-print(e,d,n)
+print("PUBLIC_KEY:",d,n)
+print("PRIVATE_KEY:",e,n)
+
+with open("public.key", "w", encoding="utf-8") as f:
+    f.write(str(d)+'\t'+str(n))
+with open("private.key", "w", encoding="utf-8") as f:
+    f.write(str(e)+'\t'+str(n))
+
+
 
 #Maximo comun divisor
 #d = 31
