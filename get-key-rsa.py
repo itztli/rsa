@@ -33,16 +33,42 @@ def test_e(e,d,p1q1):
         return True
     return False
 
-
+#exercise 4.5.2.15  Knuth, D. E. The Art of Computer Programming, Vol 2: Seminumerical Algorithms. Addison-Wesley, Reading, Mass., 1969.
+def eea(phi_n, d):
+    x0 = phi_n
+    a0 = 1
+    b0 = 0
+    x1 = d
+    a1 = 0
+    b1 = 1
+    x2 = 2 # dummy to start
+    while x2 >= 0:
+        x2 = x0 % x1
+        q = int(x0 / x1)
+        a2 = a0 - q * a1
+        b2 = b0 - q * b1
+        x0 = x1
+        x1 = x2
+        a0 = a1
+        a1 = a2
+        b0 = b1
+        b1 = b2
+        #print(x2)
+        if x2 == 1:
+            return b1  
+    return 0
+    
+    
 
 x0 = int(round(time.time() * 1000)) #int(time.time()) #time.time_ns()
 #print(x0)
 small = int(M/2)
 d = x0
-e = 1
+e = -1 #dummy value
 print("Computing...")
-while e == 1:
-    p = getBigNumber(d, small)
+while e <= 0:
+    x0 = int(round(time.time() * 1000)) #int(time.time()) #time.time_ns()
+    p = getBigNumber(x0, small)
     while not isPrime(p):    
         p = getBigNumber(p, small)
     #print("p",p)
@@ -76,7 +102,11 @@ while e == 1:
     #    d = getBigNumber(d,M)
     
     #print("phi(n)=",phi_n, "d=",d)
-    e = gcd(phi_n, d)
+    #d = 157
+    #p = 47
+    #q = 59
+    #phi_n = (p-1)*(q-1)
+    e = eea(phi_n, d) #gcd(phi_n, d)
     #print("e",e)
     
     #e = getBigNumber(d,M)
