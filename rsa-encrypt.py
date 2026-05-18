@@ -9,8 +9,21 @@ n = p*q
 d = 157
 e = 17
 
-e = int(input("Public Key: "))
-n = int(input("Module n: "))
+#e = int(input("Public Key: "))
+#n = int(input("Module n: "))
+
+public_key = input("To: ")
+
+with open(".rsa/"+public_key+".key", "r", encoding="utf-8") as f:
+    lineas = f.readlines() # lista de líneas
+
+estr, nstr = lineas[0].split('\t')
+
+e = int(estr)
+n = int(nstr)
+
+print(d,n)
+
 M = input("Enter some text: ")
 
 #M = "ITS ALL GREEK TO ME"

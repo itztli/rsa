@@ -10,9 +10,18 @@ d = 157  # PRIVATE KEY
 e = 17   # PUBLIC KEY
 
 M = input("Enter crypted text: ")
-d = int(input("Private Key: "))
-n = int(input("Module n: "))
 
+with open(".rsa/private.key", "r", encoding="utf-8") as f:
+    lineas = f.readlines() # lista de líneas
+
+dstr, nstr = lineas[0].split('\t')
+
+d = int(dstr)
+n = int(nstr)
+
+print(d,n)
+#d = int(input("Private Key: "))
+#n = int(input("Module n: "))
 
 #M = "ITS ALL GREEK TO ME"
 
